@@ -2,41 +2,27 @@
     <header>
         <form class="d-flex">
             <div>
-                <input v-model.trim="needle" type="search" class="form-control" v-on:submit.prevent>
+                <input v-model.trim="needle" type="text" class="form-control">
             </div>
             <div>
-                <button @click="searchMovie" class="btn btn-dark">Cerca</button>
+                <button @click.prevent="$emit('movieSearch', needle)" class="btn btn-dark">Cerca</button>
             </div>
         </form>
     </header>
 </template>
 
 <script>
-import axios from 'axios';
 
 export default {
     name: 'Header',
     data() {
         return {
-            needle: '',
+            needle: ''
         }
     },
-    methods: {
-
-        searchMovie() {
-            axios.get('https://api.themoviedb.org/3/search/movie',{
-                params: {
-                    api_key: 'e5b162d1b0fd1b8d4251ad244ce88b8f',
-                    query: this.needle
-                }
-            })
-            .then((resp) => {
-            console.log(resp.data.results);
-        }).catch(error => console.log(error))
-    }
-
 }
-}
+
+// link API https://developers.themoviedb.org/3/search/search-movies
 </script>
 
 <style lang="scss" scoped>
