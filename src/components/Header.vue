@@ -5,7 +5,7 @@
                 <input v-model.trim="needle" type="search" class="form-control" v-on:submit.prevent>
             </div>
             <div>
-                <button class="btn btn-dark">Cerca</button>
+                <button @click="searchMovie" class="btn btn-dark">Cerca</button>
             </div>
         </form>
     </header>
@@ -23,13 +23,19 @@ export default {
     },
     methods: {
 
-    },
-    mounted() {
-        axios.get('https://api.themoviedb.org/3/search/movie?api_key=e5b162d1b0fd1b8d4251ad244ce88b8f&query=' + needle)
-        .then((resp) => {
-        console.log(resp);
-        })
+        searchMovie() {
+            axios.get('https://api.themoviedb.org/3/search/movie',{
+                params: {
+                    api_key: 'e5b162d1b0fd1b8d4251ad244ce88b8f',
+                    query: this.needle
+                }
+            })
+            .then((resp) => {
+            console.log(resp.data.results);
+        }).catch(error => console.log(error))
     }
+
+}
 }
 </script>
 
