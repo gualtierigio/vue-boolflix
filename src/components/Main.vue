@@ -9,7 +9,7 @@
         <h1 class="text-center">Series</h1>
         <div class="container">
             <div class="row">
-                <Card v-for="tvShow in tvSeries" :key="tvShow.id" :propSeries='tvShow'/>
+                <CardSeries v-for="tvShow in tvSeries" :key="tvShow.id" :propSeries='tvShow'/>
             </div>
         </div>
     </main>
@@ -17,11 +17,13 @@
 
 <script>
 import Card from './Card.vue';
+import CardSeries from './CardSeries.vue';
 
 export default {
     name: 'Main',
     components: {
-        Card
+        Card,
+        CardSeries
     },
     props: {
         "propFindMovies" : Array,

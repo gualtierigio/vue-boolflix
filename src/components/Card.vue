@@ -1,7 +1,7 @@
 <template>
     <div class="col-12 col-md-4 col-lg-2 p-3 m-3">
         <div class="description">
-            <h3>{{propMovie.title ? propMovie.title : propSeries.name}}</h3>
+            <h3>{{propMovie.title}}</h3>
             <h5>{{propMovie.original_title}}</h5>
             <h5>{{propMovie.vote_average}}</h5>
 
