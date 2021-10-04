@@ -2,7 +2,7 @@
     <div class="col-12 col-md-4 col-lg-2 p-3 m-3">
         <div class="description">
             <h3>{{propSeries.name}}</h3>
-            <h5>{{propSeries.original_title}}</h5>
+            <h5>{{propSeries.original_name}}</h5>
             <h5>{{propSeries.vote_average}}</h5>
 
             <img v-if="propSeries.original_language== 'en'" src="../assets/en-flag.jpg" alt="propSeries.original_language">

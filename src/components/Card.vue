@@ -1,6 +1,9 @@
 <template>
     <div class="col-12 col-md-4 col-lg-2 p-3 m-3">
         <div class="description">
+            <div>
+                <img src="urlBase + posterSize + propMovie.poster_path" alt="Movie poster">
+            </div>
             <h3>{{propMovie.title}}</h3>
             <h5>{{propMovie.original_title}}</h5>
             <h5>{{propMovie.vote_average}}</h5>
@@ -15,7 +18,16 @@
 <script>
 export default {
     name: 'Cards',
-    props: ["propMovie"]
+    props: ["propMovie"],
+    data() {
+        return {
+            urlBase: 'https://image.tmdb.org/t/p/',
+            posterSize: "w154",
+        }
+    },
+    // posterImg(posterMovie) {
+    //     source = this.urlBase + this.posterSize + posterMovie
+    // }
 }
 </script>
 
