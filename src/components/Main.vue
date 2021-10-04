@@ -17,7 +17,15 @@ import Cards from './Cards.vue'
 export default {
     name: 'Main',
     components: {
-        Cards
+        Cards,
+    },
+    data() {
+        return {
+            movies: [],
+        }
+    },
+    props: {
+        "movies" : array,
     }
 
 }

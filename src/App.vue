@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header @movieSearch="searchMovie" />
-    <Main />
+    <Main :movies='findMovies'/>
   </div>
 </template>
 
@@ -17,8 +17,14 @@ export default {
     Header,
     Main
   },
+  data() {
+    return {
+      findMovies: []
+    }
+  },
   methods: {
       searchMovie(needle) {
+            if(needle > 1) {
             axios.get('https://api.themoviedb.org/3/search/movie',
                 {
                 params: {
@@ -27,9 +33,9 @@ export default {
                 }
             })
             .then((resp) => {
-                console.log(resp.data.results);
-            })
-        }
+                this.movies = [...resp.data.results];
+            })}
+          }
   }
 
 };
