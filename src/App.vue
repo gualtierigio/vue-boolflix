@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header @movieSearch="searchMovie" />
-    <Main :propFindMovies='findMovies'/>
+    <Main :propFindMovies='findMovies' :tvSeries='findSeries'/>
   </div>
 </template>
 
@@ -19,13 +19,16 @@ export default {
   },
   data() {
     return {
-      findMovies: []
+      apiMoviesUrl: 'https://api.themoviedb.org/3/search/movie',
+      apiSeriesUrl: 'https://api.themoviedb.org/3/search/tv',
+      findMovies: [],
+      findSeries: []
     }
   },
   methods: {
       searchMovie(needle) {
             if(needle.length > 1) {
-            axios.get('https://api.themoviedb.org/3/search/movie',
+            axios.get(this.apiMoviesUrl,
                 {
                 params: {
                     api_key: 'e5b162d1b0fd1b8d4251ad244ce88b8f',
@@ -34,8 +37,17 @@ export default {
             })
             .then((resp) => {
                 this.findMovies = [...resp.data.results];
-                console.log(...resp.data.results);
-            })}
+            })};
+            axios.get(this.apiSeriesUrl,
+                {
+                params: {
+                    api_key: 'e5b162d1b0fd1b8d4251ad244ce88b8f',
+                    query: needle
+                }
+            })
+            .then((resp) => {
+                this.findSeries = [...resp.data.results];
+            })
           }
   }
 
