@@ -26,11 +26,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../style/variables.scss';
 
 header{
     padding: 30px;
     height: 100px;
-    background-color: rgb(44, 44, 44);
+    background-color: $main-color;
 }
 
 </style>
