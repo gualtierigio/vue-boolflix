@@ -2,21 +2,19 @@
     <main>
         <div class="container">
             <div class="row">
-                <div class="col-6 col-md-4 col-lg-2">
-                    <Cards v-for="movie in propFindMovies" :key="movie.id" :propMovie='movie'/>
-                </div>
+                <Card v-for="movie in propFindMovies" :key="movie.id" :propMovie='movie'/>
             </div>
         </div>
     </main>
 </template>
 
 <script>
-import Cards from './Cards.vue';
+import Card from './Card.vue';
 
 export default {
     name: 'Main',
     components: {
-        Cards
+        Card
     },
     props: {
         "propFindMovies" : Array,

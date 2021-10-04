@@ -34,6 +34,7 @@ export default {
             })
             .then((resp) => {
                 this.findMovies = [...resp.data.results];
+                console.log(...resp.data.results);
             })}
           }
   }
