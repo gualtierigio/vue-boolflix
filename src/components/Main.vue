@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-6 col-md-4 col-lg-2">
-                    <Cards v-for="movie in findMovies" :key="movie.id" :movie='findMovies'/>
+                    <Cards v-for="movie in propFindMovies" :key="movie.id" :propMovie='movie'/>
                 </div>
             </div>
         </div>
@@ -16,14 +16,10 @@ import Cards from './Cards.vue';
 export default {
     name: 'Main',
     components: {
-        Cards,
-    },
-    data() {
-        return {
-        }
+        Cards
     },
     props: {
-        "findMovies" : Array,
+        "propFindMovies" : Array,
     }
 
 }
