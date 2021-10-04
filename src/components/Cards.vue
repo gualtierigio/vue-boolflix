@@ -1,10 +1,13 @@
 <template>
-  <div>patate</div>
+        <div>
+            <h1>{{movies.titolo}}</h1>
+        </div>
 </template>
 
 <script>
 export default {
-    name: 'Cards'
+    name: 'Cards',
+    props: ["findMovies"]
 }
 </script>
 

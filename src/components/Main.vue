@@ -3,16 +3,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-6 col-md-4 col-lg-2">
-                    <Cards />
+                    <Cards v-for="movie in findMovies" :key="movie.id" :movie='findMovies'/>
                 </div>
             </div>
         </div>
-        <!-- <p v-for="(movie, id) in movies" :key="id"></p> -->
     </main>
 </template>
 
 <script>
-import Cards from './Cards.vue'
+import Cards from './Cards.vue';
 
 export default {
     name: 'Main',
@@ -21,11 +20,10 @@ export default {
     },
     data() {
         return {
-            movies: [],
         }
     },
     props: {
-        "movies" : array,
+        "findMovies" : Array,
     }
 
 }
