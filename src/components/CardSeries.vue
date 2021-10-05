@@ -7,6 +7,14 @@
             <h3>{{propSeries.name}}</h3>
             <h5>{{propSeries.original_name}}</h5>
             <h5>{{propSeries.vote_average}}</h5>
+            <div class="avarange-vote mb-2">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="stars">
+                    <i class="far fa-star"></i>
+                </div>
+            </div>
 
             <img class="flag" v-if="propSeries.original_language== 'en'" src="../assets/en-flag.jpg" alt="propSeries.original_language">
             <img class="flag" v-else-if="propSeries.original_language == 'it'" src="../assets/ita-flag.jpg" alt="propSeries.original_language">
@@ -29,6 +37,7 @@ export default {
 
 <style lang='scss' scoped>
 @import '../style/variables.scss';
+@import '../style/general.scss';
 
 .description{
     color: white;
@@ -44,6 +53,10 @@ export default {
     width: 50px;
     height: 35px;
     border-radius: 12px;
+}
+
+.stars{
+    display: inline-block;
 }
 
 
