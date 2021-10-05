@@ -38,6 +38,7 @@ export default {
 
 main{
     background-color: $secondary-color;
+    min-width: 450px;
 }
 
 </style>
