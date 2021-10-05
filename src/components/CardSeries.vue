@@ -1,12 +1,15 @@
 <template>
-    <div class="col-12 col-md-4 col-lg-2 p-3 m-3">
+    <div class="col-12 col-md-4 col-lg-3 mb-4">
         <div class="description">
+            <div>
+                <img class="img-fluid poster" :src="urlBase+propSeries.poster_path" alt="Soap poster">
+            </div>
             <h3>{{propSeries.name}}</h3>
             <h5>{{propSeries.original_name}}</h5>
             <h5>{{propSeries.vote_average}}</h5>
 
-            <img v-if="propSeries.original_language== 'en'" src="../assets/en-flag.jpg" alt="propSeries.original_language">
-            <img v-else-if="propSeries.original_language == 'it'" src="../assets/ita-flag.jpg" alt="propSeries.original_language">
+            <img class="flag" v-if="propSeries.original_language== 'en'" src="../assets/en-flag.jpg" alt="propSeries.original_language">
+            <img class="flag" v-else-if="propSeries.original_language == 'it'" src="../assets/ita-flag.jpg" alt="propSeries.original_language">
             <h5 v-else>{{propSeries.original_language}}</h5>
         </div>
     </div>
@@ -15,7 +18,12 @@
 <script>
 export default {
     name: 'Cards',
-    props: ["propSeries"]
+    props: ["propSeries"],
+    data() {
+        return {
+            urlBase: 'https://image.tmdb.org/t/p/w342'
+        }
+    },
 }
 </script>
 
@@ -26,11 +34,16 @@ export default {
     color: white;
     text-align: center;
     background-color: $main-color;
-    padding: 10px;
-    img{
-        width: 50px;
-        border-radius: 12px;
-    }
+    padding: 5%;
+}
+
+.poster{
+     width: 350px;
+}
+.flag{
+    width: 50px;
+    height: 35px;
+    border-radius: 12px;
 }
 
 

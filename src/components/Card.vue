@@ -1,15 +1,15 @@
 <template>
-    <div class="col-12 col-md-4 col-lg-2 p-3 m-3">
+    <div class="col-12 col-md-4 col-lg-3 mb-4">
         <div class="description">
             <div>
-                <img src="urlBase + posterSize + propMovie.poster_path" alt="Movie poster">
+                <img class="img-fluid poster" :src="urlBase+propMovie.poster_path" alt="Movie poster">
             </div>
             <h3>{{propMovie.title}}</h3>
             <h5>{{propMovie.original_title}}</h5>
             <h5>{{propMovie.vote_average}}</h5>
 
-            <img v-if="propMovie.original_language== 'en'" src="../assets/en-flag.jpg" alt="propMovie.original_language">
-            <img v-else-if="propMovie.original_language == 'it'" src="../assets/ita-flag.jpg" alt="propMovie.original_language">
+            <img class="flag" v-if="propMovie.original_language== 'en'" src="../assets/en-flag.jpg" alt="propMovie.original_language">
+            <img class="flag" v-else-if="propMovie.original_language == 'it'" src="../assets/ita-flag.jpg" alt="propMovie.original_language">
             <h5 v-else>{{propMovie.original_language}}</h5>
         </div>
     </div>
@@ -21,13 +21,9 @@ export default {
     props: ["propMovie"],
     data() {
         return {
-            urlBase: 'https://image.tmdb.org/t/p/',
-            posterSize: "w154",
+            urlBase: 'https://image.tmdb.org/t/p/w342'
         }
     },
-    // posterImg(posterMovie) {
-    //     source = this.urlBase + this.posterSize + posterMovie
-    // }
 }
 </script>
 
@@ -38,11 +34,16 @@ export default {
     color: white;
     text-align: center;
     background-color: $main-color;
-    padding: 10px;
-    img{
-        width: 50px;
-        border-radius: 12px;
-    }
+    padding: 5%;
+}
+
+.poster{
+     width: 350px;
+}
+.flag{
+    width: 50px;
+    height: 35px;
+    border-radius: 12px;
 }
 
 
