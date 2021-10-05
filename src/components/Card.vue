@@ -1,5 +1,6 @@
 <template>
     <div class="col-12 col-md-4 col-lg-3 mb-4">
+        <img src="" alt="">
         <div class="description">
             <div>
                 <img v-if="propMovie.poster_path" class="img-fluid poster" :src="urlBase+propMovie.poster_path" alt="Movie poster">
@@ -66,6 +67,15 @@ export default {
 
 .stars{
     display: inline-block;
+}
+
+h3{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+h5{
+    font-size: 0.8rem;
 }
 
 
