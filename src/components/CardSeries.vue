@@ -2,17 +2,17 @@
     <div class="col-12 col-md-4 col-lg-3 mb-4">
         <div class="description">
             <div>
-                <img class="img-fluid poster" :src="urlBase+propSeries.poster_path" alt="Soap poster">
+                <img v-if="propSeries.poster_path" class="img-fluid poster" :src="urlBase+propSeries.poster_path" alt="Soap poster">
+                <img v-else  class="img-fluid poster" src="https://via.placeholder.com/342x458" alt="Series poster">
             </div>
             <h3>{{propSeries.name}}</h3>
             <h5>{{propSeries.original_name}}</h5>
-            <h5>{{propSeries.vote_average}}</h5>
             <div class="avarange-vote mb-2">
                 <div class="stars">
-                    <i class="fas fa-star"></i>
+                    <i v-for="i in stars(propSeries.vote_average)" :key="i" class="fas fa-star"></i>
                 </div>
                 <div class="stars">
-                    <i class="far fa-star"></i>
+                    <i v-for="i in emptyStars(stars(propSeries.vote_average))" :key="i" class="far fa-star"></i>
                 </div>
             </div>
 
@@ -32,6 +32,15 @@ export default {
             urlBase: 'https://image.tmdb.org/t/p/w342'
         }
     },
+    methods: {
+        stars(vote) {
+            return Math.ceil(vote / 2);
+        },
+        emptyStars(stellePiene) {
+            let totStars = 5;
+            return totStars - stellePiene;
+        }
+    }
 }
 </script>
 

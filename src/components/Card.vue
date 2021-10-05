@@ -2,17 +2,17 @@
     <div class="col-12 col-md-4 col-lg-3 mb-4">
         <div class="description">
             <div>
-                <img class="img-fluid poster" :src="urlBase+propMovie.poster_path" alt="Movie poster">
+                <img v-if="propMovie.poster_path" class="img-fluid poster" :src="urlBase+propMovie.poster_path" alt="Movie poster">
+                <img v-else  class="img-fluid poster" src="https://via.placeholder.com/342x458" alt="Movie poster">
             </div>
             <h3>{{propMovie.title}}</h3>
             <h5>{{propMovie.original_title}}</h5>
-            <h5>{{propMovie.vote_average}}</h5>
             <div class="avarange-vote mb-2">
                 <div class="stars">
-                    <i class="fas fa-star"></i>
+                    <i v-for="i in stars(propMovie.vote_average)" :key="i" class="fas fa-star"></i>
                 </div>
                 <div class="stars">
-                    <i class="far fa-star"></i>
+                    <i v-for="i in emptyStars(stars(propMovie.vote_average))" :key="i" class="far fa-star"></i>
                 </div>
             </div>
 
@@ -33,8 +33,12 @@ export default {
         }
     },
     methods: {
-        stars() {
-            Math.ceil.(propMovie.vote_average)
+        stars(vote) {
+            return Math.ceil(vote / 2);
+        },
+        emptyStars(stellePiene) {
+            let totStars = 5;
+            return totStars - stellePiene;
         }
     }
 }
