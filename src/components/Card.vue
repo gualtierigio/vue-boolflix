@@ -68,6 +68,10 @@ export default {
 
 }
 
+.beyond-poster:hover{
+    display: none;
+}
+
 .beyond-poster:hover .description{
     display: block;
 }
